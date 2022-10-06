@@ -6,7 +6,7 @@ const fileupload = require('express-fileupload');
 
 mongodbConnect();
 const app = express();
-const port = 80;
+const port = process.env.PORT || 80;
 
 app.use(cors())
 app.use(express.json())
