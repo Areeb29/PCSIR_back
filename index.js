@@ -11,7 +11,7 @@ const port = process.env.PORT || 80;
 //     origin: "http://localhost:3000"
 //   };
   
-app.use(cors({origin:true}))
+app.use(cors({origin:true, credentials: true,}))
 app.use(express.json())
 app.use(fileupload());
 app.use(express.urlencoded({ extended: true }));
