@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoURI = "mongodb+srv://pcsir:pcsir1980@clusterdr.fbyyijw.mongodb.net/?retryWrites=true&w=majority";
+const mongoURI = `${process.env.MONGODB_URI}`;
 
 const mongodbConnect=()=>{
     mongoose.connect(mongoURI,()=>{
