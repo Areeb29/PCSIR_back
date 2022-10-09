@@ -7,7 +7,7 @@ const fsExtra = require('fs-extra');
 const directoryPath = path.join(__dirname, '..\\files\\');
 const ReviewedPath = path.join(__dirname, '..\\files\\Reviewed');
 //passsing directoryPath and callback function
-const { listFiles, moveFile, getImage } = require('../driveFunctions')
+const { listFiles, moveFile, getImage } = require('../driveUtils')
 route.get('/:fileID', async (req, res) => {
     try {
         const file = await getImage(req.params.fileID, res);

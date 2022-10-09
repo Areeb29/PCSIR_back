@@ -1,5 +1,4 @@
 const getDriveService = require('./service')
-const fs= require('fs')
 
 const FolderID = {
     "Images": "1ZHaMjgP_MJwN3i9ScfQx7KRbmQPt8flV",
