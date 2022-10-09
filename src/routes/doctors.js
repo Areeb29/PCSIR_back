@@ -35,7 +35,11 @@ route.post('/signup',
 
     })
 
-
+route.get('/all', async (req, res)=>{
+    let doctors = await Doctor.findOne({ email: "doctorB@gmail.com" });;
+    console.log(doctors)
+    res.json(doctors)
+})
 route.post('/login',
     async (req, res) => {
 
