@@ -38,20 +38,20 @@ route.post('/signup',
 
 route.post('/login',
     async (req, res) => {
-        const body = JSON.parse(req.body)
 
         try {
             //find a Doctor with the email
-            let doctor = await Doctor.findOne({ email: body.email });
+            let doctor = await Doctor.findOne({ email: req.body.email });
             if (!doctor) {
                 return res.status(400).json({ message: 'Please Signup first' })
             }
-
-            const passwordCompare = await bcrypt.compare(body.password, doctor.password)
+            console.log(doctor)
+            console.log(req.body)
+            const passwordCompare = await bcrypt.compare(req.body.password, doctor.password)
             if (!passwordCompare) {
                 res.status(400).json({ type: "error", message: 'Please enter valid credentials' })
             }
-
+            console.log(passwordCompare);
 
             res.status(200).json({ type: "success", message: doctor.designation });
         }
