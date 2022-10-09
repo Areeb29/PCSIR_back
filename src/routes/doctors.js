@@ -57,7 +57,6 @@ route.post('/login',
                 res.status(400).json({ type: "error", message: 'Please enter valid credentials' })
             }
             console.log(passwordCompare);
-            res.header("Access-Control-Allow-Origin", "*");
             res.status(200).json({ type: "success", message: doctor.designation });
         }
         catch (error) {
