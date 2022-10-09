@@ -15,6 +15,7 @@ app.use(express.static(__dirname));
 app.use(express.static(__dirname+"\\files"));
 
 //Available Routes
+app.use('/', (req, res)=>res.send("Hello World!"))
 app.use('/image',require('./routes/image'));
 app.use('/data',require('./routes/prescription'));
 app.use('/user',require('./routes/doctors'));
