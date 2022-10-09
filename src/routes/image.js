@@ -10,14 +10,15 @@ const ReviewedPath = path.join(__dirname, '..\\files\\Reviewed');
 const { listFiles, moveFile, getImage } = require('../driveUtils')
 route.get('/:fileID', async (req, res) => {
     try {
-        const file = await getImage(req.params.fileID, res);
-        let buf = [];
-        file.data.on('data', (e) => buf.push(e));
-        file.data.on("end", () => {
-            const buffer = Buffer.concat(buf);
-            res.contentType('image/jpeg');
-            return res.send(buffer);
-        });
+        const file = await getImage(req.params.fileID);
+        // let buf = [];
+        // file.data.on('data', (e) => buf.push(e));
+        // file.data.on("end", () => {
+        //     const buffer = Buffer.concat(buf);
+        //     res.contentType('image/jpeg');
+        //     return res.send(buffer);
+        // });
+        file.data.pipe(res);
     }
     catch (error) {
         console.log(error);
