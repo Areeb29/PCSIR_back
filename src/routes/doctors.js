@@ -42,6 +42,7 @@ route.get('/all', async (req, res)=>{
 })
 route.post('/login',
     async (req, res) => {
+        console.log(req)
         const {body} = req.body;
         try {
             //find a Doctor with the email
