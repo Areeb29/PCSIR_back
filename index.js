@@ -23,6 +23,13 @@ app.use('//', (req, res)=>res.send("Hello World!"))
 app.use('/image',require('./src/routes/image'));
 app.use('/data',require('./src/routes/prescription'));
 app.use('/user',require('./src/routes/doctors'));
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+  
 // app.use('/images/nonReviewed', express.static(__dirname+"\\files\\nonReviewed"))
 // app.use('/images/differ', express.static(__dirname+"\\files\\Differ"))
 // app.use('/images/partial', express.static(__dirname+"\\files\\PartialReviewed"))
