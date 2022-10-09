@@ -21,12 +21,12 @@ app.use(express.static(__dirname+"\\files"));
 //Available Routes
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header('Access-Control-Allow-Credentials', true)
-    res.header('Access-Control-Allow-Headers',
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   )
-    res.header("Access-Control-Allow-Methods","GET, POST, PUT, PATCH, POST, DELETE, OPTIONS")
+    res.setHeader("Access-Control-Allow-Methods","GET, POST, PUT, PATCH, POST, DELETE, OPTIONS")
     next();
   });
   
