@@ -54,14 +54,14 @@ route.post('/login',
 
             const passwordCompare = await bcrypt.compare(req.body.password, doctor.password)
             if (!passwordCompare) {
-                res.status(400).json({ type: "error", message: 'Please enter valid credentials' })
+                return res.status(400).json({ type: "error", message: 'Please enter valid credentials' })
             }
             console.log(passwordCompare);
-            res.status(200).json({ type: "success", message: doctor.designation });
+            return res.status(200).json({ type: "success", message: doctor.designation });
         }
         catch (error) {
             console.log(error);
-            res.status(500).send("Internal Server Error");
+            return res.status(500).send("Internal Server Error");
         }
     }
 )
