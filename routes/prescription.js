@@ -1,6 +1,6 @@
 const express = require('express');
 const route = express.Router();
-const Prescription = require('../models/drPrescription');
+const Prescription = require('../models/drPrescriptions');
 
 route.post('/addPrescription',
     async (req, res) => {
