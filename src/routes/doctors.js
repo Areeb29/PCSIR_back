@@ -46,11 +46,12 @@ route.post('/login',
         try {
             //find a Doctor with the email
             let doctor = await Doctor.findOne({ email: req.body.email });
+            console.log(doctor)
+            console.log(req.body)
             if (!doctor) {
                 return res.status(400).json({ message: 'Please Signup first' })
             }
-            console.log(doctor)
-            console.log(req.body)
+
             const passwordCompare = await bcrypt.compare(req.body.password, doctor.password)
             if (!passwordCompare) {
                 res.status(400).json({ type: "error", message: 'Please enter valid credentials' })
