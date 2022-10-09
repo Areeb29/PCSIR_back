@@ -7,8 +7,11 @@ const fileupload = require('express-fileupload');
 mongodbConnect();
 const app = express();
 const port = process.env.PORT || 80;
-
-app.use(cors())
+var corsOptions = {
+    origin: "http://localhost:3000"
+  };
+  
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(fileupload());
 app.use(express.static(__dirname));
