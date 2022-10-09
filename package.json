@@ -5,18 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "develop": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/local-auth": "^2.1.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express-fileupload": "^1.4.0",
     "express.js": "^1.0.0",
     "fs": "0.0.1-security",
     "fs-extra": "^10.1.0",
-    "mongoose": "^6.6.1",
+    "googleapis": "^105.0.0",
+    "mongoose": "^6.6.1"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.20"
   }
 }
