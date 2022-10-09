@@ -16,12 +16,12 @@ route.get('/:fileID', async (req, res) => {
         file.data.on("end", () => {
             const buffer = Buffer.concat(buf);
             res.contentType('image/jpeg');
-            res.send(buffer);
+            return res.send(buffer);
         });
     }
     catch (error) {
         console.log(error);
-        res.status(500).send("Internal Server Error");
+        return res.status(500).send("Internal Server Error");
     }
 })
 
@@ -32,7 +32,7 @@ route.post('/moveImage', async (req, res) => {
         // const file = `${directoryPath}${req.body.oldFolder}\\${filename}`;
         
         const status = await moveFile(fileID, req.body.newFolder)
-        res.status(status).json({ type: "success" });
+        return res.status(status).json({ type: "success" });
 
         // fsExtra.move(file, `${directoryPath}${req.body.newFolder}\\${filename}`, function (err) {
         //     if (err) {
@@ -46,7 +46,7 @@ route.post('/moveImage', async (req, res) => {
     }
     catch (error) {
         console.log(error);
-        res.status(500).send("Internal Server Error");
+        return res.status(500).send("Internal Server Error");
     }
 })
 
@@ -64,7 +64,7 @@ route.get('/getImages/:folder', async (req, res) => {
         // });
         let files = await listFiles(req.params.folder)
         files = files.map(file=>file.id)
-        res.send(files);
+        return res.send(files);
     }
     catch (err) {
         return res.status(400).json({ type: "error" });

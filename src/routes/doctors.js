@@ -26,11 +26,11 @@ route.post('/signup',
                 designation: req.body.designation
             })
 
-            res.json({ message: "success" });
+            return res.json({ message: "success" });
         }
         catch (error) {
             console.log(error);
-            res.status(500).send("Internal Server Error");
+            return res.status(500).send("Internal Server Error");
         }
 
     })
@@ -38,7 +38,7 @@ route.post('/signup',
 route.get('/all', async (req, res)=>{
     let doctors = await Doctor.findOne({ email: "doctorB@gmail.com" });;
     console.log(doctors)
-    res.json(doctors)
+    return res.json(doctors)
 })
 route.post('/login',
     async (req, res) => {

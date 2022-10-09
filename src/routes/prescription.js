@@ -15,11 +15,11 @@ route.post('/addPrescription',
                 prediction: prediction,
                 suggestion:suggestion
             })
-            res.status(200).json({ type: "success", message: prescription });     
+            return res.status(200).json({ type: "success", message: prescription });     
         }
         catch (error) {
             console.log(error);
-            res.status(500).send('Internal Server Error');
+            return res.status(500).send('Internal Server Error');
         }
 
     })
@@ -31,11 +31,11 @@ route.get('/getPrescription',
         try{
             let pres = await Prescription.findOne({ image_name: req.query.image_name, doctor:req.query.doctor },{prediction:1,_id:0}).limit(1).sort({$natural:-1});
             
-            res.send(pres)
+            return res.send(pres)
         }
         catch(err){
             console.log(err)
-            res.send("internal server error")
+            return res.send("internal server error")
         }
     }    
 )
@@ -50,17 +50,17 @@ route.get('/getSuggestion',
             console.log(drA,drB,drC)
             if(drA || drB || drC)
             {
-                res.status(200).json({ "Doctor A": (drA?.suggestion!==undefined?drA.suggestion:null),"Doctor B":(drB?.suggestion!==undefined?drB.suggestion:null),"Doctor C":(drC?.suggestion!==undefined?drC.suggestion:null) });
+                return res.status(200).json({ "Doctor A": (drA?.suggestion!==undefined?drA.suggestion:null),"Doctor B":(drB?.suggestion!==undefined?drB.suggestion:null),"Doctor C":(drC?.suggestion!==undefined?drC.suggestion:null) });
             }
             else
             {
-                res.json({type:"Error"})
+                return res.json({type:"Error"})
             }
          
         }
         catch(err){
             console.log(err)
-            res.send("internal server error")
+            return res.send("internal server error")
         }
     }    
 )
